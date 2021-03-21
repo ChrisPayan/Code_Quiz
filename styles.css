@@ -1,0 +1,36 @@
+
+header {
+    display: flex;
+}
+h1 {
+    text-align: left;
+    margin-top: 4em;
+    padding-left: 18em;
+    padding-right: 25em;
+    font-size: 30px;
+}
+
+
+div {
+    margin-top: 2em;
+    font-size: 20px;
+    list-style: none;
+    padding-left: 27em;
+}
+
+.button {
+    display: block;
+    margin-top: 2em;
+}
+
+#scoreboard {
+    text-align: left;
+    margin-top: 0;
+    margin-right: auto;
+}
+#timer {
+    text-align: right;
+    margin-top: 0;
+    margin-left: auto;
+    
+}
