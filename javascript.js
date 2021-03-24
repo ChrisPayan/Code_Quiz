@@ -7,11 +7,13 @@ var Prompt = document.getElementById("header");
 var text = document.getElementById("instructions");
 var hiddenButtons = document.querySelector(".groupbutton");
 var result = document.querySelector(".result");
+var timer = document.querySelector(".timer");
 
 
 
 function GameStart () {
-    var quizTimer = 100;
+    var quizTimer = 10;
+    var quizScore = 0;
     var pageNumber = 0;
 
     //functions
@@ -26,6 +28,7 @@ function GameStart () {
     }
 
     function questionOne() {
+        if(quizTimer < 1) return;
         Prompt.textContent = "Commonly used data types DO NOT include: ";
         buttonOne.textContent = "1. Strings";
         buttonTwo.textContent = "2. Booleans";
@@ -43,6 +46,7 @@ function GameStart () {
                     setTimeout(NextPage, 1000);
                 } else if (element.matches(".Answer2") || element.matches(".Answer3") || element.matches(".Answer4")) {
                     result.textContent = "Wrong!";
+                    quizTimer -= 12;
                     pageNumber++;
                     setTimeout(NextPage, 1000);
                 }
@@ -52,6 +56,7 @@ function GameStart () {
     }
 
     function questionsTwo() {
+        if(quizTimer < 1) return;
         Prompt.textContent = "The condition in an If / else statement is enclosed within ___.";
         buttonOne.textContent = "1. quotes";
         buttonTwo.textContent = "2. curly brackets";
@@ -66,17 +71,19 @@ function GameStart () {
                 if(element.matches(".Answer2")) {
                     result.textContent = "Correct!";
                     pageNumber++;
-                    NextPage();
+                    setTimeout(NextPage, 1000);
                 } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
                     result.textContent = "Wrong!";
+                    quizTimer -= 12;
                     pageNumber++;
-                    NextPage();
+                    setTimeout(NextPage, 1000);
                 }
             }  
         });
     }
 
     function questionsThree() {
+        if(quizTimer < 1) return;
         Prompt.textContent = "Arrays in JavaScript can be used to store \n____.";
         buttonOne.textContent = "1. Numbers and Strings";
         buttonTwo.textContent = "2. Other arrays";
@@ -91,17 +98,19 @@ function GameStart () {
                 if(element.matches(".Answer2")) {
                     result.textContent = "Correct!";
                     pageNumber++;
-                    NextPage();
+                    setTimeout(NextPage, 1000);
                 } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
                     result.textContent = "Wrong!";
+                    quizTimer -= 12;
                     pageNumber++;
-                    NextPage();
+                    setTimeout(NextPage, 1000);
                 }
             }  
         });
 
     }
     function questionsFour() {
+        if(quizTimer < 1) return;
         Prompt.textContent = "String values must be enclosed within ____ \nwhen being assigned to variables";
         buttonOne.textContent = "1. commas";
         buttonTwo.textContent = "2. curly brackets";
@@ -116,17 +125,19 @@ function GameStart () {
                 if(element.matches(".Answer2")) {
                     result.textContent = "Correct!";
                     pageNumber++;
-                    NextPage();
+                    setTimeout(NextPage, 1000);
                 } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
                     result.textContent = "Wrong!";
+                    quizTimer -= 12;
                     pageNumber++;
-                    NextPage();
+                    setTimeout(NextPage, 1000);
                 }
             }  
         });
     }
 
     function questionsFive() {
+        if(quizTimer < 1) return;
         Prompt.textContent = "A very useful tool used during developement\n and debugging for printing content to the\n debugger is:";
         buttonOne.textContent = "1. JavaScript";
         buttonTwo.textContent = "2. Terminal / bash";
@@ -141,14 +152,25 @@ function GameStart () {
                 if(element.matches(".Answer2")) {
                     result.textContent = "Correct!";
                     pageNumber++;
-                    NextPage();
+                    setTimeout(NextPage, 1000);
                 } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
                     result.textContent = "Wrong!";
+                    quizTimer -= 12;
                     pageNumber++;
-                    NextPage();
+                    setTimeout(NextPage, 1000);
                 }
             }  
         });
+    }
+
+    function TheEnd() {
+        result.textContent = "";
+        Prompt.style.textAlign  = "left";
+        text.style.display = "block";
+        text.textContent = "Your score is " + quizScore;
+        hiddenButtons.style.display = "none";
+        Prompt.textContent = "All Done!"
+
     }
 
     function NextPage() {
@@ -167,16 +189,35 @@ function GameStart () {
         } else if (pageNumber == 5) {
             questionsFive();
             console.log(pageNumber);
+        } else if (pageNumber == 6) {
+            TheEnd();
         }
     }
 
+    function setTime() {
+        
+        var timerInterval = setInterval(function() {
+            quizTimer--;
+            quizScore = quizTimer;
+            timer.textContent = "Timer: " + quizTimer;
+            if(quizTimer < 1) { 
+                clearInterval(timerInterval);
+                timer.textContent = "";
+                TheEnd();
+                return;
+            } else if (pageNumber == 6) {
+                clearInterval(timerInterval)
+                timer.textContent = "";
+                TheEnd();
+                return;
+            }
+        }, 1000);
+        
+    }
     // Live Code
-
+    setTime()
     adjustLayoutQuestions();
     NextPage();
-
-    
-
 
 }
 startBtn.addEventListener("click", function(event) {
