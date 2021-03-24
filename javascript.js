@@ -1,54 +1,186 @@
+var startBtn = document.getElementById("fuckit");
 var buttonOne = document.getElementById("OptionOne");
 var buttonTwo = document.getElementById("OptionTwo");
 var buttonThree = document.getElementById("OptionThree");
 var buttonFour = document.getElementById("OptionFour");
-var Prompt = document.getElementById("Question");
+var Prompt = document.getElementById("header");
+var text = document.getElementById("instructions");
+var hiddenButtons = document.querySelector(".groupbutton");
+var result = document.querySelector(".result");
 
-var quizTimer = 100;
-var pageNumber = 0;
-// funtion QuizGame () {
-//     var timerInterval = 
-// }
 
-function NextPage() {
-    if (pageNumber == 0) {
+
+function GameStart () {
+    var quizTimer = 100;
+    var pageNumber = 0;
+
+    //functions
+    function adjustLayoutQuestions() {
+        Prompt.style.padding = "0 14em 2em 18em";
+        Prompt.style.textAlign  = "left";
+        text.style.display = "none";
+        startBtn.style.display = "none";
+        hiddenButtons.style.display = "block";
+        hiddenButtons.style.padding = "0 0 0 27em";
+        pageNumber++;
+    }
+
+    function questionOne() {
+        Prompt.textContent = "Commonly used data types DO NOT include: ";
+        buttonOne.textContent = "1. Strings";
+        buttonTwo.textContent = "2. Booleans";
+        buttonThree.textContent = "3. Alerts";
+        buttonFour.textContent = "4. Numbers";
+        result.textContent = "";
+
+        hiddenButtons.addEventListener("click", function(event) {
+            event.preventDefault();
+            var element = event.target;
+            while(pageNumber == 1) {
+                if(element.matches(".Answer1")) {
+                    result.textContent = "Correct!";
+                    pageNumber++;
+                    setTimeout(NextPage, 1000);
+                } else if (element.matches(".Answer2") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                    result.textContent = "Wrong!";
+                    pageNumber++;
+                    setTimeout(NextPage, 1000);
+                }
+            }  
+        });
+
+    }
+
+    function questionsTwo() {
         Prompt.textContent = "The condition in an If / else statement is enclosed within ___.";
         buttonOne.textContent = "1. quotes";
         buttonTwo.textContent = "2. curly brackets";
         buttonThree.textContent = "3. parenthesis";
         buttonFour.textContent = "4. squre brackets";
-        pageNumber++;
-    } else if (pageNumber == 1) {
+        result.textContent = "";
+
+        hiddenButtons.addEventListener("click", function(event) {
+            event.preventDefault();
+            var element = event.target;
+            while(pageNumber == 2) {
+                if(element.matches(".Answer2")) {
+                    result.textContent = "Correct!";
+                    pageNumber++;
+                    NextPage();
+                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                    result.textContent = "Wrong!";
+                    pageNumber++;
+                    NextPage();
+                }
+            }  
+        });
+    }
+
+    function questionsThree() {
         Prompt.textContent = "Arrays in JavaScript can be used to store \n____.";
         buttonOne.textContent = "1. Numbers and Strings";
         buttonTwo.textContent = "2. Other arrays";
         buttonThree.textContent = "3. booleans";
         buttonFour.textContent = "4. All of the above";
-        pageNumber++;
-    } else if (pageNumber == 2) {
+        result.textContent = "";
+
+        hiddenButtons.addEventListener("click", function(event) {
+            event.preventDefault();
+            var element = event.target;
+            while(pageNumber == 3) {
+                if(element.matches(".Answer2")) {
+                    result.textContent = "Correct!";
+                    pageNumber++;
+                    NextPage();
+                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                    result.textContent = "Wrong!";
+                    pageNumber++;
+                    NextPage();
+                }
+            }  
+        });
+
+    }
+    function questionsFour() {
         Prompt.textContent = "String values must be enclosed within ____ \nwhen being assigned to variables";
         buttonOne.textContent = "1. commas";
         buttonTwo.textContent = "2. curly brackets";
         buttonThree.textContent = "3. quotes";
         buttonFour.textContent = "4. parenthesis";
-        pageNumber++;
-    } else if (pageNumber == 3) {
-        Prompt.textContent = "A very useful tool used during developement\n and debugging for printing contetn to the\n debugger is:";
+        result.textContent = "";
+
+        hiddenButtons.addEventListener("click", function(event) {
+            event.preventDefault();
+            var element = event.target;
+            while(pageNumber == 4) {
+                if(element.matches(".Answer2")) {
+                    result.textContent = "Correct!";
+                    pageNumber++;
+                    NextPage();
+                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                    result.textContent = "Wrong!";
+                    pageNumber++;
+                    NextPage();
+                }
+            }  
+        });
+    }
+
+    function questionsFive() {
+        Prompt.textContent = "A very useful tool used during developement\n and debugging for printing content to the\n debugger is:";
         buttonOne.textContent = "1. JavaScript";
         buttonTwo.textContent = "2. Terminal / bash";
         buttonThree.textContent = "3. For Loops";
         buttonFour.textContent = "4. console log";
-        pageNumber++;
+        result.textContent = "";
+
+        hiddenButtons.addEventListener("click", function(event) {
+            event.preventDefault();
+            var element = event.target;
+            while(pageNumber == 5) {
+                if(element.matches(".Answer2")) {
+                    result.textContent = "Correct!";
+                    pageNumber++;
+                    NextPage();
+                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                    result.textContent = "Wrong!";
+                    pageNumber++;
+                    NextPage();
+                }
+            }  
+        });
     }
-}
 
+    function NextPage() {
+        if (pageNumber == 1) {
+            questionOne();
+            console.log(pageNumber);
+        } else if (pageNumber == 2) {
+            questionsTwo();
+            console.log(pageNumber);
+        } else if (pageNumber == 3) {
+            questionsThree();
+            console.log(pageNumber);
+        } else if (pageNumber == 4) {
+            questionsFour();
+            console.log(pageNumber);
+        } else if (pageNumber == 5) {
+            questionsFive();
+            console.log(pageNumber);
+        }
+    }
 
+    // Live Code
 
-
-
-
-
-buttonOne.addEventListener("click", function(event) {
-    event.preventDefault();
+    adjustLayoutQuestions();
     NextPage();
+
+    
+
+
+}
+startBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    GameStart();
 });
+

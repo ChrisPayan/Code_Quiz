@@ -2,25 +2,57 @@
 header {
     display: flex;
 }
-h1 {
-    text-align: left;
+
+main {
+    border: 1px solid black;
+}
+
+h2 {
+    text-align: center;
+}
+#header {
+    text-align: center;
     margin-top: 4em;
     padding-left: 18em;
-    padding-right: 25em;
+    padding-right: 18em;
+    padding-bottom: 1em;
     font-size: 30px;
 }
 
 
-div {
+.groupbutton {
+    display: none;
     margin-top: 2em;
     font-size: 20px;
     list-style: none;
-    padding-left: 27em;
+    /* padding-left: 27em; */
+}
+
+#instructions {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 400px
 }
 
 .button {
+    border-radius: 10%;
+    font-size: 20px;
     display: block;
-    margin-top: 2em;
+    margin-top: 1em;
+    background-color: rgb(197, 1, 197);
+    color: white;
+}
+
+.button:hover {
+    opacity: 75%;
+}
+
+#startbtn {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
 }
 
 #scoreboard {
@@ -33,4 +65,14 @@ div {
     margin-top: 0;
     margin-left: auto;
     
+}
+
+#fuckit {
+    border-radius: 25%;
+    font-size: 45px;
+    background-color: cyan;
+}
+#fuckit:hover {
+    background-color: white;
+    opacity: 55%;
 }
