@@ -12,7 +12,7 @@ var timer = document.querySelector(".timer");
 
 
 function GameStart () {
-    var quizTimer = 10;
+    var quizTimer = 45;
     var quizScore = 0;
     var pageNumber = 0;
 
