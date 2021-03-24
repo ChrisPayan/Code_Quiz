@@ -40,11 +40,11 @@ function GameStart () {
             event.preventDefault();
             var element = event.target;
             while(pageNumber == 1) {
-                if(element.matches(".Answer1")) {
+                if(element.matches(".Answer2")) {
                     result.textContent = "Correct!";
                     pageNumber++;
                     setTimeout(NextPage, 1000);
-                } else if (element.matches(".Answer2") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
                     result.textContent = "Wrong!";
                     quizTimer -= 12;
                     pageNumber++;
@@ -68,11 +68,11 @@ function GameStart () {
             event.preventDefault();
             var element = event.target;
             while(pageNumber == 2) {
-                if(element.matches(".Answer2")) {
+                if(element.matches(".Answer3")) {
                     result.textContent = "Correct!";
                     pageNumber++;
                     setTimeout(NextPage, 1000);
-                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                } else if (element.matches(".Answer1") || element.matches(".Answer2") || element.matches(".Answer4")) {
                     result.textContent = "Wrong!";
                     quizTimer -= 12;
                     pageNumber++;
@@ -95,11 +95,11 @@ function GameStart () {
             event.preventDefault();
             var element = event.target;
             while(pageNumber == 3) {
-                if(element.matches(".Answer2")) {
+                if(element.matches(".Answer4")) {
                     result.textContent = "Correct!";
                     pageNumber++;
                     setTimeout(NextPage, 1000);
-                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer2")) {
                     result.textContent = "Wrong!";
                     quizTimer -= 12;
                     pageNumber++;
@@ -149,11 +149,11 @@ function GameStart () {
             event.preventDefault();
             var element = event.target;
             while(pageNumber == 5) {
-                if(element.matches(".Answer2")) {
+                if(element.matches(".Answer3")) {
                     result.textContent = "Correct!";
                     pageNumber++;
                     setTimeout(NextPage, 1000);
-                } else if (element.matches(".Answer1") || element.matches(".Answer3") || element.matches(".Answer4")) {
+                } else if (element.matches(".Answer1") || element.matches(".Answer2") || element.matches(".Answer4")) {
                     result.textContent = "Wrong!";
                     quizTimer -= 12;
                     pageNumber++;
