@@ -164,14 +164,28 @@ function GameStart () {
     }
 
     function TheEnd() {
+        Prompt.style.padding = "0 18em 0 18em";
         result.textContent = "";
-        Prompt.style.textAlign  = "left";
+        Prompt.style.textAlign  = "center";
         text.style.display = "block";
         text.textContent = "Your score is " + quizScore;
         hiddenButtons.style.display = "none";
         Prompt.textContent = "All Done!"
 
+        var User = document.createElement("input");
+        User.setAttribute('type', 'text');
+        document.getElementById("YeahYeet").appendChild(User);
+    
+        var UserInput = document.getElementById("YeahYeet").value;
+        console.log(UserInput);
     }
+
+    // function storePlayer () {
+    //     localStorage.setItem("player-name", JSON.stringify playername );
+    //     localStorage.setItem("player-score", JSON.stringify hiScoreList );
+
+
+    // }
 
     function NextPage() {
         if (pageNumber == 1) {

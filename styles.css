@@ -48,6 +48,12 @@ h2 {
     opacity: 75%;
 }
 
+.textbox {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+
 #startbtn {
     display: flex;
     flex-direction: column;
