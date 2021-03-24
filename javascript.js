@@ -1,4 +1,4 @@
-var startBtn = document.getElementById("fuckit");
+var startBtn = document.getElementById("StartBTN");
 var buttonOne = document.getElementById("OptionOne");
 var buttonTwo = document.getElementById("OptionTwo");
 var buttonThree = document.getElementById("OptionThree");
